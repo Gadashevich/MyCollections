@@ -1,22 +1,30 @@
 package structure;
 
 
+import structure.AbstractCollection;
 
-public class Stack<T> {
-    private Segment<T> lastSegment;
-    private  int length;
+public class Stack<T> extends AbstractCollection<T> {
+    private Node<T> last;
+    private  int size;
 
+    private static class Node<T> {
+        public T element;
+        public Node<T> next;
+    }
+
+
+    @Override
     public int size() {
-        return length;
+        return size;
     }
 
     public T pop() {
-        if(length == 0){
+        if(size == 0){
             return  null;
         }
-        T returnElement = lastSegment.element;
-        lastSegment = lastSegment.nextSegment;
-        length--;
+        T returnElement = last.element;
+        last = last.next;
+        size--;
         return  returnElement ;
     }
 
@@ -24,18 +32,18 @@ public class Stack<T> {
         if(newElement == null){
             throw  new IllegalArgumentException("Element can not be null");
         }
-        Segment<T> newSegment = new Segment<>();
-        newSegment.element = newElement;
-        newSegment.nextSegment = lastSegment;
-        lastSegment = newSegment;
-        length++;
+        Node<T> node = new Node<>();
+        node.element = newElement;
+        node.next = last;
+        last = node;
+        size++;
     }
 
     public T peek() {
-       if(length ==0){
+       if(size ==0){
            return null;
        }
-        return lastSegment.element;
+        return last.element;
     }
 
 

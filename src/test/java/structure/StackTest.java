@@ -9,12 +9,11 @@ class StackTest {
     private Stack<String> stringStack;
 
     @BeforeEach
-      void init() {
+    void init() {
         stringStack = new Stack<>();
     }
 
-
-     void fillStack() {
+    void fillStack() {
         stringStack.push("its_First_StringElement");
         stringStack.push("its+Second_StringElement");
         stringStack.push("it_Third_StringElement");
@@ -22,7 +21,7 @@ class StackTest {
     }
 
     @Test
-     void push() {
+    void push() {
         fillStack();
         assertEquals(4, stringStack.size());
         assertEquals("its`Four_StringElement", stringStack.pop());
@@ -31,7 +30,7 @@ class StackTest {
     }
 
     @Test
-     void pushNullMessage() {
+    void pushNullMessage() {
         try {
             stringStack.push(null);
             fail("no Exeption");
@@ -41,35 +40,28 @@ class StackTest {
     }
 
     @Test
-     void pushNullException() {
-        assertThrows(IllegalArgumentException.class, () ->stringStack.push(null));
+    void pushNullException() {
+        assertThrows(IllegalArgumentException.class, () -> stringStack.push(null));
     }
 
-
-
     @Test
-     void peek(){
+    void peek() {
         fillStack();
-        assertEquals(4,stringStack.size());
-        assertEquals("its`Four_StringElement",stringStack.peek());
-        assertEquals(4,stringStack.size());
-
-
+        assertEquals(4, stringStack.size());
+        assertEquals("its`Four_StringElement", stringStack.peek());
+        assertEquals(4, stringStack.size());
     }
 
     @Test
-     void peekNull() {
+    void peekNull() {
 
         assertNull(stringStack.peek());
     }
 
     @Test
-     void pop() {
+    void pop() {
         assertNull(stringStack.pop());
-        assertEquals(0,stringStack.size());
+        assertEquals(0, stringStack.size());
     }
-
-
-
 
 }
