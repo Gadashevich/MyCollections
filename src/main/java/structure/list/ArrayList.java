@@ -204,8 +204,4 @@ public class ArrayList<T> extends AbstractCollection<T> implements List<T> {
         size = 0;
     }
 
-    @Override
-    public void sort(boolean flag) {
-
-    }
 }
